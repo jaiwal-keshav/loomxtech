@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: loomx-backend
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/loomx_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+
+# Application-specific config
+loomx:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  jwt:
+    # Base64-encoded 256-bit secret. Override in production via env var!
+    secret: ${JWT_SECRET:bG9vbXgtdGVjaG5vbG9naWVzLXN1cGVyLXNlY3JldC1qd3Qta2V5LWNoYW5nZS1tZQ==}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}   # 24h
+  admin:
+    # Seeded on first run if no admin exists
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:Admin@123}
+    email: ${ADMIN_EMAIL:admin@loomxtech.com}
+
+logging:
+  level:
+    org.springframework.security: INFO

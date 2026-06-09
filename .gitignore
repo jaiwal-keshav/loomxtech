@@ -1,0 +1,29 @@
+# ---- Node / frontend ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# ---- Java / backend ----
+target/
+*.class
+!.mvn/wrapper/maven-wrapper.jar
+
+# ---- Env / secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+*.log
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Local tooling ----
+.claude/

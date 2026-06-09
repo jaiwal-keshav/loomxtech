@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(34, 211, 238, 0.3);
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0c14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#22d3ee, #a855f7);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-violet bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl shadow-card;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan/60;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-neon-cyan to-neon-violet text-ink-950 hover:shadow-glow hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/5 text-slate-100 hover:border-neon-cyan/50 hover:bg-white/10;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-800/60 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:border-neon-cyan/60 focus:ring-2 focus:ring-neon-cyan/20;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300;
+  }
+}
+
+/* Markdown article styling */
+.prose-loomx {
+  @apply text-slate-300 leading-relaxed;
+}
+.prose-loomx h2 {
+  @apply mt-10 mb-3 font-display text-2xl font-bold text-white;
+}
+.prose-loomx h3 {
+  @apply mt-8 mb-2 font-display text-xl font-semibold text-white;
+}
+.prose-loomx p {
+  @apply my-4;
+}
+.prose-loomx ul {
+  @apply my-4 list-disc space-y-2 pl-6 marker:text-neon-cyan;
+}
+.prose-loomx ol {
+  @apply my-4 list-decimal space-y-2 pl-6 marker:text-neon-cyan;
+}
+.prose-loomx a {
+  @apply text-neon-cyan underline underline-offset-2 hover:text-neon-violet;
+}
+.prose-loomx code {
+  @apply rounded bg-white/10 px-1.5 py-0.5 text-sm text-neon-cyan;
+}
+.prose-loomx pre {
+  @apply my-6 overflow-x-auto rounded-xl border border-white/10 bg-ink-900 p-4 text-sm;
+}
+.prose-loomx pre code {
+  @apply bg-transparent p-0 text-slate-200;
+}
+.prose-loomx blockquote {
+  @apply my-6 border-l-2 border-neon-cyan/50 pl-4 italic text-slate-400;
+}
+.prose-loomx strong {
+  @apply text-white;
+}
+.prose-loomx img {
+  @apply my-6 rounded-xl border border-white/10;
+}
+
+/* Animated aurora blobs used in backgrounds */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+}

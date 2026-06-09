@@ -25,7 +25,7 @@ public class ContactMessage {
     @Column(nullable = false, updatable = false)
     private Instant createdAt = Instant.now();
 
-    @Column(nullable = false)
+    @Column(name = "is_read", nullable = false)
     private boolean read = false;
 
     public Long getId() { return id; }

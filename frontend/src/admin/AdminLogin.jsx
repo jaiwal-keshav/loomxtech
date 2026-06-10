@@ -38,15 +38,15 @@ export default function AdminLogin() {
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet text-ink-950">
             <Icon name="code" className="h-5 w-5" strokeWidth={2.2} />
           </span>
-          <span className="font-display text-xl font-bold text-white">
+          <span className="font-display text-xl font-bold text-fg">
             Loom<span className="gradient-text">X</span>
           </span>
         </Link>
 
         <form onSubmit={onSubmit} className="glass-card space-y-5 p-8">
           <div className="text-center">
-            <h1 className="font-display text-2xl font-bold text-white">Admin Login</h1>
-            <p className="mt-1 text-sm text-slate-400">Sign in to manage LoomX</p>
+            <h1 className="font-display text-2xl font-bold text-fg">Admin Login</h1>
+            <p className="mt-1 text-sm text-muted">Sign in to manage LoomX</p>
           </div>
           <Field label="Username" name="username" required value={form.username} onChange={onChange} placeholder="admin" />
           <Field label="Password" name="password" type="password" required value={form.password} onChange={onChange} placeholder="••••••••" />
@@ -59,7 +59,7 @@ export default function AdminLogin() {
             )}
           </button>
         </form>
-        <p className="mt-6 text-center text-xs text-slate-500">
+        <p className="mt-6 text-center text-xs text-faint">
           Default seed: admin / Admin@123 — change in production.
         </p>
       </div>

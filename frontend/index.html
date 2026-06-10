@@ -7,6 +7,14 @@
     <meta name="description" content="LoomX Technologies — From Idea to App, We Make It Happen. Product-minded engineering, human-centered design and scalable systems for startups and growing businesses." />
     <meta name="theme-color" content="#05060a" />
     <title>LoomX Technologies — From Idea to App, We Make It Happen</title>
+    <script>
+      // Apply saved theme before first paint to avoid a flash.
+      try {
+        if (localStorage.getItem('loomx_theme') === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

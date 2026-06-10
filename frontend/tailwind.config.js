@@ -4,6 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Semantic, theme-aware tokens (flip via the `.light` class on <html>)
+        bg: 'rgb(var(--c-bg) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        surface2: 'rgb(var(--c-surface2) / <alpha-value>)',
+        fg: 'rgb(var(--c-fg) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        faint: 'rgb(var(--c-faint) / <alpha-value>)',
+        // Fixed dark scale (used for dark text on bright gradient buttons)
         ink: {
           950: '#05060a',
           900: '#0a0c14',

@@ -23,26 +23,26 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-white">Dashboard</h1>
-      <p className="mt-1 text-sm text-slate-400">Overview of leads and content.</p>
+      <h1 className="font-display text-2xl font-bold text-fg">Dashboard</h1>
+      <p className="mt-1 text-sm text-muted">Overview of leads and content.</p>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => (
           <Link key={c.key} to={c.to} className="glass-card group p-6 transition hover:-translate-y-1 hover:border-neon-cyan/40">
-            <span className={`grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ring-1 ring-white/10 ${c.color}`}>
+            <span className={`grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ring-1 ring-fg/10 ${c.color}`}>
               <Icon name={c.icon} className="h-6 w-6" />
             </span>
-            <div className="mt-4 font-display text-3xl font-bold text-white">
+            <div className="mt-4 font-display text-3xl font-bold text-fg">
               {loading ? '—' : (summary[c.key] ?? 0)}
             </div>
-            <div className="mt-1 text-sm text-slate-400">{c.label}</div>
+            <div className="mt-1 text-sm text-muted">{c.label}</div>
           </Link>
         ))}
       </div>
 
       <div className="mt-8 grid gap-5 lg:grid-cols-2">
         <div className="glass-card p-6">
-          <h3 className="font-display text-lg font-semibold text-white">Quick actions</h3>
+          <h3 className="font-display text-lg font-semibold text-fg">Quick actions</h3>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link to="/admin/blog/new" className="btn-primary">New blog post</Link>
             <Link to="/admin/consultations" className="btn-ghost">View consultations</Link>
@@ -50,8 +50,8 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="glass-card p-6">
-          <h3 className="font-display text-lg font-semibold text-white">Welcome back 👋</h3>
-          <p className="mt-2 text-sm text-slate-400">
+          <h3 className="font-display text-lg font-semibold text-fg">Welcome back 👋</h3>
+          <p className="mt-2 text-sm text-muted">
             Manage incoming leads, respond to messages, and publish insights to the blog — all from here.
           </p>
         </div>

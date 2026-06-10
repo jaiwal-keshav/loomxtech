@@ -48,7 +48,7 @@ export default function BookConsultation() {
         {/* Side info */}
         <Reveal>
           <div className="glass-card h-full p-8">
-            <h3 className="font-display text-xl font-semibold text-white">What to expect</h3>
+            <h3 className="font-display text-xl font-semibold text-fg">What to expect</h3>
             <ul className="mt-6 space-y-5">
               {[
                 ['clock', '30-minute call', 'A focused conversation about your goals and challenges.'],
@@ -60,8 +60,8 @@ export default function BookConsultation() {
                     <Icon name={icon} className="h-5 w-5" />
                   </span>
                   <div>
-                    <div className="font-medium text-white">{t}</div>
-                    <div className="text-sm text-slate-400">{d}</div>
+                    <div className="font-medium text-fg">{t}</div>
+                    <div className="text-sm text-muted">{d}</div>
                   </div>
                 </li>
               ))}

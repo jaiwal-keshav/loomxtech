@@ -48,7 +48,7 @@ export function Select({ label, name, required, value, onChange, options }) {
       </label>
       <select id={name} name={name} required={required} value={value} onChange={onChange} className="input">
         {options.map((o) => (
-          <option key={o.value} value={o.value} className="bg-ink-800">
+          <option key={o.value} value={o.value} className="bg-surface">
             {o.label}
           </option>
         ))}

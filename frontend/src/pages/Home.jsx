@@ -25,7 +25,7 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.1] text-white sm:text-6xl"
+          className="mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.1] text-fg sm:text-6xl"
         >
           From Idea to App,{' '}
           <span className="gradient-text animate-gradient-shift">We Make It Happen.</span>
@@ -35,7 +35,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg"
+          className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
         >
           {company.motto}
         </motion.p>
@@ -61,8 +61,8 @@ function Hero() {
         >
           {stats.map((s) => (
             <div key={s.label} className="glass-card px-4 py-5">
-              <div className="font-display text-2xl font-bold text-white sm:text-3xl">{s.value}</div>
-              <div className="mt-1 text-xs text-slate-400">{s.label}</div>
+              <div className="font-display text-2xl font-bold text-fg sm:text-3xl">{s.value}</div>
+              <div className="mt-1 text-xs text-muted">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -103,9 +103,9 @@ export default function Home() {
           {process.map((p, i) => (
             <Reveal key={p.step} delay={i * 0.08}>
               <div className="glass-card h-full p-6">
-                <div className="font-display text-4xl font-bold text-white/10">{p.step}</div>
-                <h3 className="-mt-4 font-display text-lg font-semibold text-white">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.body}</p>
+                <div className="font-display text-4xl font-bold text-fg/10">{p.step}</div>
+                <h3 className="-mt-4 font-display text-lg font-semibold text-fg">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
               </div>
             </Reveal>
           ))}
@@ -117,10 +117,10 @@ export default function Home() {
         <Reveal>
           <div className="glass-card grid gap-8 p-8 md:grid-cols-2 md:p-12">
             <div>
-              <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+              <h2 className="font-display text-2xl font-bold text-fg sm:text-3xl">
                 Product-minded engineering, <span className="gradient-text">human-centered design</span>
               </h2>
-              <p className="mt-4 text-slate-400">
+              <p className="mt-4 text-muted">
                 We build scalable systems for startups and growing businesses — combining deep
                 technical craft with a relentless focus on user value and business outcomes.
               </p>
@@ -130,11 +130,11 @@ export default function Home() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {['Scalable architecture', 'Human-centered UX', 'Faster delivery', 'End-to-end ownership'].map((t) => (
-                <div key={t} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                <div key={t} className="flex items-center gap-3 rounded-xl border border-fg/10 bg-fg/[0.02] px-4 py-3">
                   <span className="grid h-7 w-7 place-items-center rounded-lg bg-neon-cyan/15 text-neon-cyan">
                     <Icon name="check" className="h-4 w-4" strokeWidth={2.5} />
                   </span>
-                  <span className="text-sm text-slate-200">{t}</span>
+                  <span className="text-sm text-fg">{t}</span>
                 </div>
               ))}
             </div>

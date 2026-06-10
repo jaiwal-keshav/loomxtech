@@ -18,7 +18,7 @@ export default function PageHeader({ eyebrow, title, subtitle }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mx-auto mt-5 max-w-3xl font-display text-4xl font-bold leading-tight text-white sm:text-5xl"
+        className="mx-auto mt-5 max-w-3xl font-display text-4xl font-bold leading-tight text-fg sm:text-5xl"
       >
         {title}
       </motion.h1>
@@ -27,7 +27,7 @@ export default function PageHeader({ eyebrow, title, subtitle }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400"
+          className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted"
         >
           {subtitle}
         </motion.p>

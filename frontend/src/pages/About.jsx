@@ -26,17 +26,17 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <div className="glass-card p-8">
-              <h2 className="font-display text-2xl font-bold text-white">Our story</h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              <h2 className="font-display text-2xl font-bold text-fg">Our story</h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
                 LoomX Technologies was founded on a simple belief: great software comes from a tight
                 loop between product thinking, human-centered design, and scalable engineering.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400">
-                From our roots in <span className="text-white">Chhatrapati Sambhajinagar</span> and{' '}
-                <span className="text-white">Pune</span>, we partner with founders and teams to take
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                From our roots in <span className="text-fg">Chhatrapati Sambhajinagar</span> and{' '}
+                <span className="text-fg">Pune</span>, we partner with founders and teams to take
                 products all the way from idea to production — and keep them growing.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              <p className="mt-4 text-sm leading-relaxed text-muted">
                 Whether it's end-to-end software development, AI implementation, automation, or cloud
                 infrastructure management, our mission stays the same:{' '}
                 <span className="gradient-text font-medium">from idea to app, we make it happen.</span>
@@ -48,11 +48,11 @@ export default function About() {
             <div className="grid gap-4 sm:grid-cols-2">
               {values.map((v) => (
                 <div key={v.title} className="glass-card p-6">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-neon-cyan/20 to-neon-violet/20 text-neon-cyan ring-1 ring-white/10">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-neon-cyan/20 to-neon-violet/20 text-neon-cyan ring-1 ring-fg/10">
                     <Icon name={v.icon} className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 font-display text-base font-semibold text-white">{v.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{v.body}</p>
+                  <h3 className="mt-4 font-display text-base font-semibold text-fg">{v.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{v.body}</p>
                 </div>
               ))}
             </div>
@@ -71,8 +71,8 @@ export default function About() {
                   <Icon name="map" className="h-6 w-6" />
                 </span>
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-white">{o.city}</h3>
-                  <p className="text-sm text-slate-400">{o.region}</p>
+                  <h3 className="font-display text-lg font-semibold text-fg">{o.city}</h3>
+                  <p className="text-sm text-muted">{o.region}</p>
                 </div>
               </div>
             </Reveal>
@@ -88,8 +88,8 @@ export default function About() {
             <Reveal key={p.step} delay={i * 0.08}>
               <div className="glass-card h-full p-6">
                 <div className="font-display text-3xl font-bold gradient-text">{p.step}</div>
-                <h3 className="mt-2 font-display text-lg font-semibold text-white">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.body}</p>
+                <h3 className="mt-2 font-display text-lg font-semibold text-fg">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
               </div>
             </Reveal>
           ))}

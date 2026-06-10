@@ -12,13 +12,13 @@ export default function SectionHeading({ eyebrow, title, subtitle, center = true
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <h2 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+        <h2 className="font-display text-3xl font-bold leading-tight text-fg sm:text-4xl">
           {title}
         </h2>
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
-          <p className="mt-4 text-base leading-relaxed text-slate-400">{subtitle}</p>
+          <p className="mt-4 text-base leading-relaxed text-muted">{subtitle}</p>
         </Reveal>
       )}
     </div>

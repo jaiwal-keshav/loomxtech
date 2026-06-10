@@ -27,3 +27,7 @@ Thumbs.db
 
 # ---- Local tooling ----
 .claude/
+
+# Playwright test artifacts
+.playwright-mcp/
+*.jpeg

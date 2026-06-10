@@ -4,26 +4,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ----------------------------------------------------------------------------
+   Theme tokens. Default = dark. `html.light` flips to the light theme.
+   Colors are stored as raw "R G B" triplets so Tailwind's `/<alpha-value>`
+   opacity modifiers keep working (e.g. bg-fg/10, border-fg/15).
+---------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  --c-bg: 5 6 10;          /* page background        */
+  --c-surface: 17 19 31;   /* solid-ish surfaces     */
+  --c-surface2: 10 12 20;  /* secondary surface      */
+  --c-fg: 248 250 252;     /* primary text / hi-contrast */
+  --c-body: 226 232 240;   /* default body text      */
+  --c-muted: 148 163 184;  /* secondary text         */
+  --c-faint: 100 116 139;  /* tertiary text          */
+
+  /* Glassmorphism (translucent overlays) */
+  --glass: 255 255 255;
+  --glass-alpha: 0.03;
+  --glass-strong-alpha: 0.06;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.10;
+
+  /* Decorative background */
+  --grid-line: 255 255 255;
+  --grid-alpha: 0.04;
+  --aurora-opacity: 0.5;
+}
+
+html.light {
+  color-scheme: light;
+
+  --c-bg: 247 248 251;
+  --c-surface: 255 255 255;
+  --c-surface2: 241 245 249;
+  --c-fg: 15 23 42;
+  --c-body: 30 41 59;
+  --c-muted: 71 85 105;
+  --c-faint: 100 116 139;
+
+  --glass: 255 255 255;
+  --glass-alpha: 0.7;
+  --glass-strong-alpha: 0.85;
+  --glass-border: 15 23 42;
+  --glass-border-alpha: 0.08;
+
+  --grid-line: 15 23 42;
+  --grid-alpha: 0.05;
+  --aurora-opacity: 0.3;
+}
+
 @layer base {
-  :root {
-    color-scheme: dark;
-  }
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    @apply font-sans antialiased;
+    background-color: rgb(var(--c-bg));
+    color: rgb(var(--c-body));
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   ::selection {
     background: rgba(34, 211, 238, 0.3);
   }
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0c14;
+    background: rgb(var(--c-surface2));
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(#22d3ee, #a855f7);
@@ -42,11 +92,16 @@
   }
 
   .glass {
-    @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+    background: rgb(var(--glass) / var(--glass-alpha));
+    backdrop-filter: blur(16px);
   }
 
   .glass-card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl shadow-card;
+    @apply rounded-2xl shadow-card;
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+    background: rgb(var(--glass) / var(--glass-alpha));
+    backdrop-filter: blur(16px);
   }
 
   .btn {
@@ -56,30 +111,59 @@
     @apply btn bg-gradient-to-r from-neon-cyan to-neon-violet text-ink-950 hover:shadow-glow hover:-translate-y-0.5;
   }
   .btn-ghost {
-    @apply btn border border-white/15 bg-white/5 text-slate-100 hover:border-neon-cyan/50 hover:bg-white/10;
+    @apply btn;
+    color: rgb(var(--c-fg));
+    border: 1px solid rgb(var(--glass-border) / calc(var(--glass-border-alpha) + 0.05));
+    background: rgb(var(--glass) / calc(var(--glass-alpha) + 0.02));
+  }
+  .btn-ghost:hover {
+    border-color: rgb(34 211 238 / 0.5);
+    background: rgb(var(--glass) / calc(var(--glass-alpha) + 0.06));
   }
 
   .input {
-    @apply w-full rounded-xl border border-white/10 bg-ink-800/60 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:border-neon-cyan/60 focus:ring-2 focus:ring-neon-cyan/20;
+    @apply w-full rounded-xl px-4 py-3 text-sm outline-none transition;
+    color: rgb(var(--c-fg));
+    background: rgb(var(--c-surface2) / 0.7);
+    border: 1px solid rgb(var(--glass-border) / calc(var(--glass-border-alpha) + 0.02));
+  }
+  .input::placeholder {
+    color: rgb(var(--c-faint));
+  }
+  .input:focus {
+    border-color: rgb(34 211 238 / 0.6);
+    box-shadow: 0 0 0 3px rgb(34 211 238 / 0.15);
   }
   .label {
-    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400;
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider;
+    color: rgb(var(--c-muted));
   }
 
   .chip {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300;
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium;
+    color: rgb(var(--c-muted));
+    border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+    background: rgb(var(--glass) / calc(var(--glass-alpha) + 0.02));
+  }
+
+  /* Faint grid used in the animated background */
+  .grid-overlay {
+    background-image:
+      linear-gradient(to right, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px);
   }
 }
 
 /* Markdown article styling */
 .prose-loomx {
-  @apply text-slate-300 leading-relaxed;
+  @apply leading-relaxed;
+  color: rgb(var(--c-muted));
 }
 .prose-loomx h2 {
-  @apply mt-10 mb-3 font-display text-2xl font-bold text-white;
+  @apply mt-10 mb-3 font-display text-2xl font-bold text-fg;
 }
 .prose-loomx h3 {
-  @apply mt-8 mb-2 font-display text-xl font-semibold text-white;
+  @apply mt-8 mb-2 font-display text-xl font-semibold text-fg;
 }
 .prose-loomx p {
   @apply my-4;
@@ -94,22 +178,22 @@
   @apply text-neon-cyan underline underline-offset-2 hover:text-neon-violet;
 }
 .prose-loomx code {
-  @apply rounded bg-white/10 px-1.5 py-0.5 text-sm text-neon-cyan;
+  @apply rounded bg-fg/10 px-1.5 py-0.5 text-sm text-neon-cyan;
 }
 .prose-loomx pre {
-  @apply my-6 overflow-x-auto rounded-xl border border-white/10 bg-ink-900 p-4 text-sm;
+  @apply my-6 overflow-x-auto rounded-xl border border-fg/10 bg-surface2 p-4 text-sm;
 }
 .prose-loomx pre code {
-  @apply bg-transparent p-0 text-slate-200;
+  @apply bg-transparent p-0 text-fg;
 }
 .prose-loomx blockquote {
-  @apply my-6 border-l-2 border-neon-cyan/50 pl-4 italic text-slate-400;
+  @apply my-6 border-l-2 border-neon-cyan/50 pl-4 italic text-faint;
 }
 .prose-loomx strong {
-  @apply text-white;
+  @apply text-fg;
 }
 .prose-loomx img {
-  @apply my-6 rounded-xl border border-white/10;
+  @apply my-6 rounded-xl border border-fg/10;
 }
 
 /* Animated aurora blobs used in backgrounds */
@@ -117,6 +201,6 @@
   position: absolute;
   border-radius: 9999px;
   filter: blur(80px);
-  opacity: 0.5;
+  opacity: var(--aurora-opacity);
   pointer-events: none;
 }

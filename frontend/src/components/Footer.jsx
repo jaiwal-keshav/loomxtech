@@ -5,7 +5,7 @@ import Icon from './Icon'
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="relative mt-24 border-t border-white/10 bg-ink-900/50">
+    <footer className="relative mt-24 border-t border-fg/10 bg-surface2/50">
       <div className="container-x py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
@@ -14,11 +14,11 @@ export default function Footer() {
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet text-ink-950">
                 <Icon name="code" className="h-5 w-5" strokeWidth={2.2} />
               </span>
-              <span className="font-display text-lg font-bold text-white">
+              <span className="font-display text-lg font-bold text-fg">
                 Loom<span className="gradient-text">X</span>
               </span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               {company.tagline}
             </p>
             <div className="mt-5 flex gap-3">
@@ -34,7 +34,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={name}
-                  className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-slate-400 transition hover:border-neon-cyan/50 hover:text-neon-cyan"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-fg/10 text-muted transition hover:border-neon-cyan/50 hover:text-neon-cyan"
                 >
                   <Icon name={name} className="h-4 w-4" />
                 </a>
@@ -44,11 +44,11 @@ export default function Footer() {
 
           {/* Navigate */}
           <div>
-            <h4 className="text-sm font-semibold text-white">Navigate</h4>
+            <h4 className="text-sm font-semibold text-fg">Navigate</h4>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-sm text-slate-400 transition hover:text-neon-cyan">
+                  <Link to={l.to} className="text-sm text-muted transition hover:text-neon-cyan">
                     {l.label}
                   </Link>
                 </li>
@@ -58,11 +58,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-white">Services</h4>
+            <h4 className="text-sm font-semibold text-fg">Services</h4>
             <ul className="mt-4 space-y-2.5">
               {services.slice(0, 6).map((s) => (
                 <li key={s.id}>
-                  <Link to="/services" className="text-sm text-slate-400 transition hover:text-neon-cyan">
+                  <Link to="/services" className="text-sm text-muted transition hover:text-neon-cyan">
                     {s.title}
                   </Link>
                 </li>
@@ -72,15 +72,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-white">Get in touch</h4>
-            <ul className="mt-4 space-y-3 text-sm text-slate-400">
+            <h4 className="text-sm font-semibold text-fg">Get in touch</h4>
+            <ul className="mt-4 space-y-3 text-sm text-muted">
               <li className="flex items-center gap-2.5">
                 <Icon name="mail" className="h-4 w-4 text-neon-cyan" />
-                <a href={`mailto:${company.email}`} className="hover:text-white">{company.email}</a>
+                <a href={`mailto:${company.email}`} className="hover:text-fg">{company.email}</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Icon name="call" className="h-4 w-4 text-neon-cyan" />
-                <a href={`tel:${company.phone}`} className="hover:text-white">{company.phone}</a>
+                <a href={`tel:${company.phone}`} className="hover:text-fg">{company.phone}</a>
               </li>
               {company.offices.map((o) => (
                 <li key={o.city} className="flex items-start gap-2.5">
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-fg/10 pt-6 text-xs text-faint sm:flex-row">
           <p>© {year} {company.name}. All rights reserved.</p>
           <p>From Idea to App, We Make It Happen.</p>
         </div>

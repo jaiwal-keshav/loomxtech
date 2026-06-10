@@ -10,10 +10,10 @@ export default function CTASection() {
           <div className="aurora animate-pulse-slow left-1/4 top-0 h-64 w-64 bg-neon-cyan/30" />
           <div className="aurora animate-pulse-slow right-1/4 bottom-0 h-64 w-64 bg-neon-violet/30" />
           <div className="relative">
-            <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold text-fg sm:text-4xl">
               Ready to go <span className="gradient-text">from idea to app</span>?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-400">
+            <p className="mx-auto mt-4 max-w-xl text-muted">
               Tell us what you're building. We'll help you move faster from prototype to production.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

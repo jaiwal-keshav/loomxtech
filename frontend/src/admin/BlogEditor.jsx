@@ -52,17 +52,17 @@ export default function BlogEditor() {
   if (loading) {
     return (
       <div className="grid min-h-[40vh] place-items-center">
-        <div className="h-9 w-9 animate-spin rounded-full border-2 border-white/10 border-t-neon-cyan" />
+        <div className="h-9 w-9 animate-spin rounded-full border-2 border-fg/10 border-t-neon-cyan" />
       </div>
     )
   }
 
   return (
     <div className="max-w-3xl">
-      <Link to="/admin/blog" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-neon-cyan">
+      <Link to="/admin/blog" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-neon-cyan">
         <Icon name="arrow" className="h-4 w-4 rotate-180" /> Back to blog
       </Link>
-      <h1 className="mt-4 font-display text-2xl font-bold text-white">{isEdit ? 'Edit post' : 'New post'}</h1>
+      <h1 className="mt-4 font-display text-2xl font-bold text-fg">{isEdit ? 'Edit post' : 'New post'}</h1>
 
       <form onSubmit={onSubmit} className="glass-card mt-6 space-y-5 p-6 sm:p-8">
         <Field label="Title" name="title" required value={form.title} onChange={onChange} placeholder="Post title" />
@@ -75,8 +75,8 @@ export default function BlogEditor() {
         </div>
         <Field label="Tags (comma separated)" name="tags" value={form.tags} onChange={onChange} placeholder="engineering, ai, product" />
 
-        <label className="flex items-center gap-3 text-sm text-slate-200">
-          <input type="checkbox" name="published" checked={form.published} onChange={onChange} className="h-4 w-4 rounded border-white/20 bg-ink-800 accent-neon-cyan" />
+        <label className="flex items-center gap-3 text-sm text-fg">
+          <input type="checkbox" name="published" checked={form.published} onChange={onChange} className="h-4 w-4 rounded border-fg/20 bg-surface accent-neon-cyan" />
           Published (visible on the public blog)
         </label>
 

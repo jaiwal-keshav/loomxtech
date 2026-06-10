@@ -20,20 +20,20 @@ export default function Services() {
             <Reveal key={s.id} delay={(i % 2) * 0.08}>
               <article
                 id={s.id}
-                className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-neon-violet/40 hover:shadow-glow-violet"
+                className="group relative h-full overflow-hidden rounded-2xl border border-fg/10 bg-fg/[0.03] p-7 transition hover:border-neon-violet/40 hover:shadow-glow-violet"
               >
                 <div className="flex items-start gap-4">
-                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-neon-violet/20 text-neon-cyan ring-1 ring-white/10">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-neon-violet/20 text-neon-cyan ring-1 ring-fg/10">
                     <Icon name={s.icon} className="h-7 w-7" />
                   </span>
                   <div>
-                    <h2 className="font-display text-xl font-semibold text-white">{s.title}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.description}</p>
+                    <h2 className="font-display text-xl font-semibold text-fg">{s.title}</h2>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{s.description}</p>
                   </div>
                 </div>
                 <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {s.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2.5 text-sm text-slate-300">
+                    <li key={p} className="flex items-center gap-2.5 text-sm text-muted">
                       <span className="grid h-5 w-5 place-items-center rounded-md bg-neon-cyan/15 text-neon-cyan">
                         <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2.5} />
                       </span>

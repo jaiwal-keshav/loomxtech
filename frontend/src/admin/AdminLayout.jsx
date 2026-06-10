@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate, Link } from 'react-router-dom'
 import { clearAuth, getUser } from './auth'
 import Icon from '../components/Icon'
+import ThemeToggle from '../components/ThemeToggle'
 
 const nav = [
   { to: '/admin', label: 'Dashboard', icon: 'chart', end: true },
@@ -22,16 +23,16 @@ export default function AdminLayout() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-white/10 bg-ink-900/60 p-5 lg:flex">
+      <aside className="hidden w-64 shrink-0 flex-col border-r border-fg/10 bg-surface2/60 p-5 lg:flex">
         <Link to="/" className="flex items-center gap-2.5 px-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-neon-cyan to-neon-violet text-ink-950">
             <Icon name="code" className="h-5 w-5" strokeWidth={2.2} />
           </span>
-          <span className="font-display text-lg font-bold text-white">
+          <span className="font-display text-lg font-bold text-fg">
             Loom<span className="gradient-text">X</span>
           </span>
         </Link>
-        <span className="mt-1 px-2 text-xs text-slate-500">Admin Panel</span>
+        <span className="mt-1 px-2 text-xs text-faint">Admin Panel</span>
 
         <nav className="mt-8 flex-1 space-y-1">
           {nav.map((n) => (
@@ -41,7 +42,7 @@ export default function AdminLayout() {
               end={n.end}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
-                  isActive ? 'bg-white/10 text-white' : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                  isActive ? 'bg-fg/10 text-fg' : 'text-muted hover:bg-fg/5 hover:text-fg'
                 }`
               }
             >
@@ -59,7 +60,7 @@ export default function AdminLayout() {
       {/* Main */}
       <div className="flex flex-1 flex-col">
         {/* Top bar (mobile nav + user) */}
-        <header className="flex items-center justify-between border-b border-white/10 bg-ink-900/40 px-5 py-3">
+        <header className="flex items-center justify-between border-b border-fg/10 bg-surface2/40 px-5 py-3">
           <div className="flex items-center gap-2 overflow-x-auto lg:hidden">
             {nav.map((n) => (
               <NavLink
@@ -68,7 +69,7 @@ export default function AdminLayout() {
                 end={n.end}
                 className={({ isActive }) =>
                   `whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium ${
-                    isActive ? 'bg-white/10 text-white' : 'text-slate-400'
+                    isActive ? 'bg-fg/10 text-fg' : 'text-muted'
                   }`
                 }
               >
@@ -77,10 +78,11 @@ export default function AdminLayout() {
             ))}
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <span className="text-sm text-slate-400">
-              Hi, <span className="text-white">{user?.username || 'admin'}</span>
+            <ThemeToggle />
+            <span className="text-sm text-muted">
+              Hi, <span className="text-fg">{user?.username || 'admin'}</span>
             </span>
-            <button onClick={logout} className="rounded-lg p-2 text-slate-400 hover:text-white lg:hidden" aria-label="Logout">
+            <button onClick={logout} className="rounded-lg p-2 text-muted hover:text-fg lg:hidden" aria-label="Logout">
               <Icon name="arrow" className="h-4 w-4 rotate-180" />
             </button>
           </div>

@@ -87,7 +87,7 @@ export default function BookService() {
         {/* Side: services list */}
         <Reveal delay={0.1}>
           <div className="glass-card h-full p-8">
-            <h3 className="font-display text-xl font-semibold text-white">Our services</h3>
+            <h3 className="font-display text-xl font-semibold text-fg">Our services</h3>
             <ul className="mt-6 space-y-3">
               {services.map((s) => (
                 <li key={s.id} className="flex items-start gap-3">
@@ -95,8 +95,8 @@ export default function BookService() {
                     <Icon name={s.icon} className="h-5 w-5" />
                   </span>
                   <div>
-                    <div className="text-sm font-medium text-white">{s.title}</div>
-                    <div className="text-xs text-slate-400">{s.short}</div>
+                    <div className="text-sm font-medium text-fg">{s.title}</div>
+                    <div className="text-xs text-muted">{s.short}</div>
                   </div>
                 </li>
               ))}

@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader'
 import SectionHeading from '../components/SectionHeading'
 import CTASection from '../components/CTASection'
 import Globe3D from '../three/Globe3D'
+import Seo from '../components/Seo'
 
 const values = [
   { icon: 'target', title: 'Outcome over output', body: 'We measure success by the value we create, not the lines we write.' },
@@ -16,6 +17,11 @@ const values = [
 export default function About() {
   return (
     <>
+      <Seo
+        title="About"
+        description="LoomX Technologies is a service-based technology company in Chhatrapati Sambhajinagar & Pune, taking products from idea to production."
+        path="/about"
+      />
       <PageHeader
         eyebrow="About Us"
         title="We turn ambitious ideas into production software"

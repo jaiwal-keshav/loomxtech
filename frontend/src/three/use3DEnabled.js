@@ -21,7 +21,16 @@ export function use3DEnabled() {
       hasWebGL = false
     }
 
-    setEnabled(hasWebGL && !reduceMotion && !smallScreen)
+    if (!(hasWebGL && !reduceMotion && !smallScreen)) return
+
+    // Defer the heavy WebGL init until the browser is idle so it doesn't block
+    // first paint / interactivity (keeps Total Blocking Time low). The CSS
+    // aurora shows instantly in the meantime.
+    const idle =
+      window.requestIdleCallback || ((cb) => window.setTimeout(() => cb(), 400))
+    const cancel = window.cancelIdleCallback || window.clearTimeout
+    const id = idle(() => setEnabled(true), { timeout: 2000 })
+    return () => cancel(id)
   }, [])
 
   return enabled

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 import Icon from './Icon'
+import Magnetic from './Magnetic'
 
 export default function CTASection() {
   return (
@@ -17,10 +18,14 @@ export default function CTASection() {
               Tell us what you're building. We'll help you move faster from prototype to production.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link to="/book-consultation" className="btn-primary">
-                Book a Consultation <Icon name="arrow" className="h-4 w-4" />
-              </Link>
-              <Link to="/book-service" className="btn-ghost">Book a Service</Link>
+              <Magnetic>
+                <Link to="/book-consultation" className="btn-primary">
+                  Book a Consultation <Icon name="arrow" className="h-4 w-4" />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link to="/book-service" className="btn-ghost">Book a Service</Link>
+              </Magnetic>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import client from '../api/client'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import Seo from '../components/Seo'
 
 function formatDate(iso) {
   try {
@@ -28,6 +29,11 @@ export default function Blog() {
 
   return (
     <>
+      <Seo
+        title="Blog"
+        description="Insights on building, scaling, and shipping software — engineering, product, design, and AI from the LoomX team."
+        path="/blog"
+      />
       <PageHeader
         eyebrow="Insights"
         title="Ideas on building, scaling, and shipping"

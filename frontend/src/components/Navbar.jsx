@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { company, navLinks } from '../data/site'
 import Icon from './Icon'
 import ThemeToggle from './ThemeToggle'
+import { prefetchRoute } from '../prefetch'
 
 function Logo() {
   return (
@@ -48,6 +49,8 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               end={link.to === '/'}
+              onMouseEnter={() => prefetchRoute(link.to)}
+              onFocus={() => prefetchRoute(link.to)}
               className={({ isActive }) =>
                 `relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   isActive ? 'text-fg' : 'text-muted hover:text-fg'

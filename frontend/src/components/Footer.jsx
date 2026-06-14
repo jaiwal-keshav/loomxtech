@@ -44,7 +44,7 @@ export default function Footer() {
 
           {/* Navigate */}
           <div>
-            <h4 className="text-sm font-semibold text-fg">Navigate</h4>
+            <h3 className="text-sm font-semibold text-fg">Navigate</h3>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((l) => (
                 <li key={l.to}>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-fg">Services</h4>
+            <h3 className="text-sm font-semibold text-fg">Services</h3>
             <ul className="mt-4 space-y-2.5">
               {services.slice(0, 6).map((s) => (
                 <li key={s.id}>
@@ -72,7 +72,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-fg">Get in touch</h4>
+            <h3 className="text-sm font-semibold text-fg">Get in touch</h3>
             <ul className="mt-4 space-y-3 text-sm text-muted">
               <li className="flex items-center gap-2.5">
                 <Icon name="mail" className="h-4 w-4 text-neon-cyan" />

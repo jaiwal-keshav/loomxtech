@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import { Field, TextArea, Select, StatusBanner, SubmitButton } from '../components/FormControls'
+import Seo from '../components/Seo'
 
 const topicOptions = [
   { value: '', label: 'Select a topic…' },
@@ -38,6 +39,11 @@ export default function BookConsultation() {
 
   return (
     <>
+      <Seo
+        title="Book a Consultation"
+        description="Book a free consultation with LoomX Technologies. We'll help you map the fastest path from idea to app."
+        path="/book-consultation"
+      />
       <PageHeader
         eyebrow="Book a Consultation"
         title="Let's talk about what you're building"

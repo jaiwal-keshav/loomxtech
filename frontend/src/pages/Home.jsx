@@ -6,6 +6,9 @@ import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
 import CTASection from '../components/CTASection'
+import Magnetic from '../components/Magnetic'
+import CountUp from '../components/CountUp'
+import Seo from '../components/Seo'
 
 function Hero() {
   return (
@@ -46,10 +49,14 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <Link to="/book-consultation" className="btn-primary">
-            Book a Consultation <Icon name="arrow" className="h-4 w-4" />
-          </Link>
-          <Link to="/book-service" className="btn-ghost">Book a Service</Link>
+          <Magnetic>
+            <Link to="/book-consultation" className="btn-primary">
+              Book a Consultation <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link to="/book-service" className="btn-ghost">Book a Service</Link>
+          </Magnetic>
         </motion.div>
 
         {/* Stats */}
@@ -61,7 +68,9 @@ function Hero() {
         >
           {stats.map((s) => (
             <div key={s.label} className="glass-card px-4 py-5">
-              <div className="font-display text-2xl font-bold text-fg sm:text-3xl">{s.value}</div>
+              <div className="font-display text-2xl font-bold text-fg sm:text-3xl">
+                <CountUp value={s.value} />
+              </div>
               <div className="mt-1 text-xs text-muted">{s.label}</div>
             </div>
           ))}
@@ -74,6 +83,11 @@ function Hero() {
 export default function Home() {
   return (
     <>
+      <Seo
+        title=""
+        description="LoomX Technologies — end-to-end software, web & app development, AI implementation, automation and cloud infrastructure for startups and growing businesses."
+        path="/"
+      />
       <Hero />
 
       {/* Services */}

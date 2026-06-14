@@ -3,10 +3,17 @@ import Icon from '../components/Icon'
 import Reveal from '../components/Reveal'
 import PageHeader from '../components/PageHeader'
 import CTASection from '../components/CTASection'
+import CountUp from '../components/CountUp'
+import Seo from '../components/Seo'
 
 export default function WhyUs() {
   return (
     <>
+      <Seo
+        title="Why Us"
+        description="Why choose LoomX Technologies: product-minded engineering, human-centered design, scalable systems, and speed from prototype to production."
+        path="/why-us"
+      />
       <PageHeader
         eyebrow="Why LoomX"
         title="A partner built around your outcomes"
@@ -34,7 +41,9 @@ export default function WhyUs() {
           <div className="glass-card grid grid-cols-2 gap-6 p-8 sm:grid-cols-4 sm:p-12">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-display text-3xl font-bold gradient-text sm:text-4xl">{s.value}</div>
+                <div className="font-display text-3xl font-bold gradient-text sm:text-4xl">
+                  <CountUp value={s.value} />
+                </div>
                 <div className="mt-1 text-xs text-muted">{s.label}</div>
               </div>
             ))}

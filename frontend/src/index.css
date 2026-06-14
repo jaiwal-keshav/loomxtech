@@ -15,8 +15,8 @@
   --c-surface2: 10 12 20;  /* secondary surface      */
   --c-fg: 248 250 252;     /* primary text / hi-contrast */
   --c-body: 226 232 240;   /* default body text      */
-  --c-muted: 148 163 184;  /* secondary text         */
-  --c-faint: 100 116 139;  /* tertiary text          */
+  --c-muted: 178 190 206;  /* secondary text (AA on dark) */
+  --c-faint: 138 152 172;  /* tertiary text (AA on dark)  */
 
   /* Glassmorphism (translucent overlays) */
   --glass: 255 255 255;

@@ -4,10 +4,16 @@ import Icon from '../components/Icon'
 import Reveal from '../components/Reveal'
 import PageHeader from '../components/PageHeader'
 import CTASection from '../components/CTASection'
+import Seo from '../components/Seo'
 
 export default function Services() {
   return (
     <>
+      <Seo
+        title="Services"
+        description="End-to-end software development, web & app development, AI implementation, automation, and cloud infrastructure management by LoomX Technologies."
+        path="/services"
+      />
       <PageHeader
         eyebrow="Our Services"
         title="Everything you need to build and scale"

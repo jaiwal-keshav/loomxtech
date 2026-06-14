@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import { Field, TextArea, StatusBanner, SubmitButton } from '../components/FormControls'
+import Seo from '../components/Seo'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -30,6 +31,11 @@ export default function Contact() {
 
   return (
     <>
+      <Seo
+        title="Contact"
+        description="Get in touch with LoomX Technologies — questions, ideas, or partnerships. Offices in Chhatrapati Sambhajinagar & Pune."
+        path="/contact"
+      />
       <PageHeader
         eyebrow="Contact"
         title="Let's start a conversation"

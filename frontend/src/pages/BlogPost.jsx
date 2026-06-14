@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import client from '../api/client'
 import Icon from '../components/Icon'
+import Seo from '../components/Seo'
 
 function formatDate(iso) {
   try {
@@ -49,6 +50,7 @@ export default function BlogPost() {
 
   return (
     <article className="container-x max-w-3xl py-16">
+      <Seo title={post.title} description={post.excerpt} path={`/blog/${post.slug}`} />
       <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-neon-cyan">
         <Icon name="arrow" className="h-4 w-4 rotate-180" /> Back to blog
       </Link>

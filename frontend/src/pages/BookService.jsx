@@ -6,6 +6,7 @@ import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import { Field, TextArea, Select, StatusBanner, SubmitButton } from '../components/FormControls'
+import Seo from '../components/Seo'
 
 const serviceOptions = [
   { value: '', label: 'Select a service…' },
@@ -57,6 +58,11 @@ export default function BookService() {
 
   return (
     <>
+      <Seo
+        title="Book a Service"
+        description="Request a service from LoomX Technologies — software, web, app, AI, automation, or cloud. Tell us what you need built."
+        path="/book-service"
+      />
       <PageHeader
         eyebrow="Book a Service"
         title="Tell us what you need built"

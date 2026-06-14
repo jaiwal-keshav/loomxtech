@@ -41,7 +41,7 @@ function Marker({ position, color, label }) {
         <ringGeometry args={[0.08, 0.11, 24]} />
         <meshBasicMaterial color={color} transparent opacity={0.6} side={THREE.DoubleSide} />
       </mesh>
-      <Html center distanceFactor={8} position={[0, 0.22, 0]} occlude>
+      <Html center distanceFactor={8} position={[0, 0.22, 0]}>
         <span className="whitespace-nowrap rounded-full border border-fg/15 bg-bg/70 px-2 py-0.5 text-[10px] font-medium text-fg backdrop-blur">
           {label}
         </span>
@@ -111,17 +111,18 @@ function Globe({ colors, theme }) {
   )
 }
 
-export default function GlobeScene() {
+export default function GlobeScene({ frameloop = 'always' }) {
   const { colors, theme } = useThemeColors()
   return (
     <Canvas
-      dpr={[1, 2]}
+      frameloop={frameloop}
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0, 6], fov: 45 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
     >
       <Globe colors={colors} theme={theme} />
       <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.6} rotateSpeed={0.5} />
-      <EffectComposer>
+      <EffectComposer multisampling={0}>
         <Bloom intensity={colors.bloom} luminanceThreshold={0.1} luminanceSmoothing={0.9} mipmapBlur />
       </EffectComposer>
     </Canvas>

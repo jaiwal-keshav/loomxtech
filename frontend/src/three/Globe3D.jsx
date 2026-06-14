@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { use3DEnabled } from './use3DEnabled'
+import { useInView } from './useInView'
 
 const GlobeScene = lazy(() => import('./GlobeScene'))
 
@@ -18,11 +19,12 @@ function GlobeFallback() {
 
 export default function Globe3D({ className = '' }) {
   const enabled = use3DEnabled()
+  const [ref, inView] = useInView()
   return (
-    <div className={`relative aspect-square w-full ${className}`}>
+    <div ref={ref} className={`relative aspect-square w-full ${className}`}>
       {enabled ? (
         <Suspense fallback={<GlobeFallback />}>
-          <GlobeScene />
+          <GlobeScene frameloop={inView ? 'always' : 'never'} />
         </Suspense>
       ) : (
         <GlobeFallback />

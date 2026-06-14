@@ -4,10 +4,10 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import { useThemeColors } from './useThemeColors'
 
-const COUNT = 150
+const COUNT = 110
 const RADIUS = 6.5
-const MAX_DIST = 2.5
-const MAX_LINES = 1600
+const MAX_DIST = 2.2
+const MAX_LINES = 1100
 
 function Constellation({ colors }) {
   const tiltRef = useRef()
@@ -137,16 +137,17 @@ function Constellation({ colors }) {
   )
 }
 
-export default function HeroScene() {
+export default function HeroScene({ frameloop = 'always' }) {
   const { colors } = useThemeColors()
   return (
     <Canvas
-      dpr={[1, 2]}
+      frameloop={frameloop}
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0, 12], fov: 60 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
     >
       <Constellation colors={colors} />
-      <EffectComposer>
+      <EffectComposer multisampling={0}>
         <Bloom intensity={colors.bloom} luminanceThreshold={0.08} luminanceSmoothing={0.9} mipmapBlur />
       </EffectComposer>
     </Canvas>

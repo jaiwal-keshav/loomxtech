@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { use3DEnabled } from './use3DEnabled'
 
 const ScrollScene = lazy(() => import('./ScrollScene'))
@@ -16,6 +16,7 @@ export default function Scroll3D({ className = '' }) {
   const enabled = use3DEnabled()
   const wrapRef = useRef(null)
   const progress = useRef(0)
+  const [inView, setInView] = useState(true)
 
   useEffect(() => {
     if (!enabled) return
@@ -31,9 +32,16 @@ export default function Scroll3D({ className = '' }) {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
+
+    let obs
+    if (wrapRef.current && typeof IntersectionObserver !== 'undefined') {
+      obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: '120px' })
+      obs.observe(wrapRef.current)
+    }
     return () => {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
+      obs?.disconnect()
     }
   }, [enabled])
 
@@ -41,7 +49,7 @@ export default function Scroll3D({ className = '' }) {
     <div ref={wrapRef} className={`relative h-full w-full ${className}`}>
       {enabled ? (
         <Suspense fallback={<ScrollFallback />}>
-          <ScrollScene progressRef={progress} />
+          <ScrollScene progressRef={progress} frameloop={inView ? 'always' : 'never'} />
         </Suspense>
       ) : (
         <ScrollFallback />

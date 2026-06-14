@@ -22,7 +22,7 @@ function Knot({ progressRef, colors }) {
 
   return (
     <mesh ref={mesh}>
-      <torusKnotGeometry args={[1, 0.34, 180, 32]} />
+      <torusKnotGeometry args={[1, 0.34, 140, 24]} />
       <MeshDistortMaterial
         color={colors.violet}
         emissive={colors.cyan}
@@ -36,19 +36,20 @@ function Knot({ progressRef, colors }) {
   )
 }
 
-export default function ScrollScene({ progressRef }) {
+export default function ScrollScene({ progressRef, frameloop = 'always' }) {
   const { colors } = useThemeColors()
   return (
     <Canvas
-      dpr={[1, 2]}
+      frameloop={frameloop}
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0, 4.2], fov: 50 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
     >
       <ambientLight intensity={0.5} />
       <pointLight position={[4, 4, 4]} intensity={50} color={colors.cyan} />
       <pointLight position={[-4, -2, 2]} intensity={40} color={colors.violet} />
       <Knot progressRef={progressRef} colors={colors} />
-      <EffectComposer>
+      <EffectComposer multisampling={0}>
         <Bloom intensity={colors.bloom} luminanceThreshold={0.2} luminanceSmoothing={0.9} mipmapBlur />
       </EffectComposer>
     </Canvas>

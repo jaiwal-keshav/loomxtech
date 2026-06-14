@@ -4,6 +4,7 @@ import Reveal from '../components/Reveal'
 import PageHeader from '../components/PageHeader'
 import SectionHeading from '../components/SectionHeading'
 import CTASection from '../components/CTASection'
+import Globe3D from '../three/Globe3D'
 
 const values = [
   { icon: 'target', title: 'Outcome over output', body: 'We measure success by the value we create, not the lines we write.' },
@@ -63,20 +64,26 @@ export default function About() {
       {/* Locations */}
       <section className="container-x py-12">
         <SectionHeading eyebrow="Where we are" title="Two offices, one team" center />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-5 sm:grid-cols-2">
-          {company.offices.map((o, i) => (
-            <Reveal key={o.city} delay={i * 0.08}>
-              <div className="glass-card flex items-center gap-4 p-6">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-neon-cyan/15 text-neon-cyan">
-                  <Icon name="map" className="h-6 w-6" />
-                </span>
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-fg">{o.city}</h3>
-                  <p className="text-sm text-muted">{o.region}</p>
+        <div className="mt-10 grid items-center gap-8 lg:grid-cols-2">
+          <Reveal>
+            <Globe3D className="max-w-md lg:mx-auto" />
+          </Reveal>
+          <div className="grid gap-5">
+            {company.offices.map((o, i) => (
+              <Reveal key={o.city} delay={i * 0.08}>
+                <div className="glass-card flex items-center gap-4 p-6">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-neon-cyan/15 text-neon-cyan">
+                    <Icon name="map" className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-fg">{o.city}</h3>
+                    <p className="text-sm text-muted">{o.region}</p>
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+            <p className="text-sm text-faint">Drag the globe to explore — arcs show how our teams connect.</p>
+          </div>
         </div>
       </section>
 

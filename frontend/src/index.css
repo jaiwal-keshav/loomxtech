@@ -196,6 +196,27 @@ html.light {
   @apply my-6 rounded-xl border border-fg/10;
 }
 
+/* 3D tilt glare highlight */
+.tilt-3d {
+  position: relative;
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 211, 238, 0.18),
+    transparent 45%
+  );
+}
+.tilt-3d:hover .tilt-glare {
+  opacity: 1;
+}
+
 /* Animated aurora blobs used in backgrounds */
 .aurora {
   position: absolute;

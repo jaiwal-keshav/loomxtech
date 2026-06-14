@@ -23,6 +23,8 @@ export default defineConfig({
           react: ['react', 'react-dom', 'react-router-dom'],
           motion: ['framer-motion'],
           markdown: ['react-markdown', 'remark-gfm'],
+          three: ['three'],
+          r3f: ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
         },
       },
     },

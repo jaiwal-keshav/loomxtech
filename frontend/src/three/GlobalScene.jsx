@@ -1,6 +1,7 @@
 import { useRef, useMemo, useEffect, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import { useThemeColors } from './useThemeColors'
 
@@ -96,15 +97,17 @@ function Field({ colors, scrollRef, pointerRef }) {
       lineGeo.attributes.position.needsUpdate = true
     }
 
-    // Scroll-driven camera dolly + rotation (the interactive scroll graphic)
+    // Scroll-driven camera flythrough (the interactive scroll graphic) — dramatic
     const p = scrollRef.current
-    camera.position.z = THREE.MathUtils.lerp(camera.position.z, 12 - p * 5, 0.06)
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, p * 2.5, 0.06)
+    camera.position.z = THREE.MathUtils.lerp(camera.position.z, 14 - p * 9.5, 0.06)
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, p * 3.5, 0.06)
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, Math.sin(p * Math.PI) * 3, 0.06)
     camera.lookAt(0, 0, 0)
 
     if (spin.current) {
       spin.current.rotation.y += d * 0.04
-      spin.current.rotation.z = THREE.MathUtils.lerp(spin.current.rotation.z, p * 0.7, 0.06)
+      spin.current.rotation.z = THREE.MathUtils.lerp(spin.current.rotation.z, p * 1.4, 0.06)
+      spin.current.rotation.x = THREE.MathUtils.lerp(spin.current.rotation.x, p * 0.5, 0.06)
     }
     if (tilt.current) {
       tilt.current.rotation.x = THREE.MathUtils.lerp(tilt.current.rotation.x, pointerRef.current.y * 0.18, 0.05)
@@ -142,6 +145,7 @@ function Field({ colors, scrollRef, pointerRef }) {
 export default function GlobalScene() {
   const { colors } = useThemeColors()
   const [dpr, setDpr] = useState(1.5)
+  const [bloom, setBloom] = useState(true)
   const scrollRef = useRef(0)
   const pointerRef = useRef({ x: 0, y: 0 })
 
@@ -172,10 +176,17 @@ export default function GlobalScene() {
       gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
     >
       <PerformanceMonitor
-        onDecline={() => setDpr(1)}
+        flipflops={3}
+        onDecline={() => { setDpr(1); setBloom(false) }}
         onIncline={() => setDpr(1.5)}
+        onFallback={() => setBloom(false)}
       />
       <Field colors={colors} scrollRef={scrollRef} pointerRef={pointerRef} />
+      {bloom && (
+        <EffectComposer multisampling={0}>
+          <Bloom intensity={colors.bloom * 0.55} luminanceThreshold={0.25} luminanceSmoothing={0.9} mipmapBlur />
+        </EffectComposer>
+      )}
     </Canvas>
   )
 }

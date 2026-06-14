@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AnimatedBackground from './components/AnimatedBackground'
+import Background3D from './three/Background3D'
 import ScrollToTop from './components/ScrollToTop'
 import Layout from './components/Layout'
 
@@ -36,7 +36,7 @@ function PageLoader() {
 export default function App() {
   return (
     <>
-      <AnimatedBackground />
+      <Background3D />
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>

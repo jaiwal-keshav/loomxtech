@@ -6,13 +6,10 @@ import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
 import CTASection from '../components/CTASection'
-import Hero3D from '../three/Hero3D'
-import Scroll3D from '../three/Scroll3D'
 
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <Hero3D />
       <div className="container-x relative z-10 flex flex-col items-center pt-20 pb-16 text-center sm:pt-28">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -115,30 +112,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scroll-driven 3D showcase */}
-      <section className="container-x py-20">
-        <div className="grid items-center gap-8 lg:grid-cols-2">
-          <Reveal>
-            <div>
-              <span className="chip mb-4">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon-violet" />
-                Engineered to move
-              </span>
-              <h2 className="font-display text-3xl font-bold text-fg sm:text-4xl">
-                Complexity, <span className="gradient-text">elegantly engineered</span>
-              </h2>
-              <p className="mt-4 max-w-md text-muted">
-                Intricate systems, made to feel effortless. We sweat the architecture so your
-                product stays fast, reliable, and a joy to build on — at any scale.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="h-[340px] sm:h-[420px]">
-              <Scroll3D />
-            </div>
-          </Reveal>
-        </div>
+      {/* Engineering statement */}
+      <section className="container-x py-16">
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="chip mb-4">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon-violet" />
+              Engineered to move
+            </span>
+            <h2 className="font-display text-3xl font-bold text-fg sm:text-4xl">
+              Complexity, <span className="gradient-text">elegantly engineered</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted">
+              Intricate systems, made to feel effortless. We sweat the architecture so your
+              product stays fast, reliable, and a joy to build on — at any scale.
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       {/* Why us strip */}
